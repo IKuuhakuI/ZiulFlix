@@ -68,7 +68,11 @@ const Navbar = () => {
             "
         >
           <p className="text-white text-sm"> Browse </p>
-          <BsChevronDown className="text-white transition" />
+          <BsChevronDown
+            className={`text-white transition ${
+              showMobileMenu ? "rotate-180" : "rotate-0"
+            }`}
+          />
           <MobileMenu visible={showMobileMenu} />
         </div>
 
@@ -89,7 +93,11 @@ const Navbar = () => {
               <img src="/images/default-blue.png" alt="" />
             </div>
 
-            <BsChevronDown className="text-white transition" />
+            <BsChevronDown
+              className={`text-white transition ${
+                showAccountMenu ? "rotate-180" : "rotate-0"
+              }`}
+            />
 
             <AccountMenu visible={showAccountMenu} />
           </div>
