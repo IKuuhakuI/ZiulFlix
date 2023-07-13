@@ -1,8 +1,15 @@
+import { useCallback, useState } from "react";
+import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";
 
 import { BsChevronDown } from "react-icons/bs";
 
 const Navbar = () => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const toggleMobileMenu = useCallback(() => {
+    setShowMobileMenu((current) => !current);
+  }, []);
   return (
     <nav className="w-full fixed z-40">
       <div
@@ -39,6 +46,7 @@ const Navbar = () => {
         </div>
 
         <div
+          onClick={toggleMobileMenu}
           className="
                 lg:hidden
                 flex
@@ -52,6 +60,7 @@ const Navbar = () => {
         >
           <p className="text-white text-sm"> Browse </p>
           <BsChevronDown className="text-white transition" />
+          <MobileMenu visible={showMobileMenu} />
         </div>
       </div>
     </nav>
