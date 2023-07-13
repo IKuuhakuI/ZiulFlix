@@ -2,7 +2,7 @@ import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 
 export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession();
+  const session = await getSession(context);
 
   if (!session) {
     return {
@@ -20,8 +20,48 @@ export async function getServerSideProps(context: NextPageContext) {
 
 const Profiles = () => {
   return (
-    <div>
-      <p className="text-white text-4xl">Profiles</p>
+    <div className="flex items-center h-full justify-center">
+      <div className="flex flex-col">
+        <h1 className="text-white text-3xl text-center md:text-6xl">
+          Who is watching?
+        </h1>
+
+        <div className="flex items-center justify-center gap-8 mt-10">
+          <div onClick={() => {}}>
+            <div className="group flex-row w-44 mx-auto">
+              <div
+                className="
+                        w-44
+                        h-44
+                        rounded-md
+                        flex
+                        items-center
+                        justify-center
+                        border-2
+                        border-transparent
+                        group-hover:cursor-pointer
+                        group-hover:border-white
+                        overflow-hidden
+                    "
+              >
+                <img src="/images/default-blue.png" alt="Profile" />
+              </div>
+
+              <div
+                className="
+                    mt-4
+                    text-gray-400
+                    text-2xl
+                    text-center
+                    group-hover:text-white
+                "
+              >
+                Name
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
